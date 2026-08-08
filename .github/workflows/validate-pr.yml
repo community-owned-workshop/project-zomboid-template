@@ -19,6 +19,7 @@ concurrency:
 
 jobs:
   validate:
+    if: github.repository != 'community-owned-workshop/project-zomboid-template' # disable action for template repo; you can remove this line in your own repo
     uses: community-owned-workshop/steam-workshop-devops/.github/workflows/validate-project-zomboid.yml@v1
     with:
       mod-folder: "[MyMod]"
