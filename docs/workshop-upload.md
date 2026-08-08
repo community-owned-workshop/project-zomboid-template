@@ -5,14 +5,14 @@
 Run:
 
 ```powershell
-.\tools\prepare-for-workshop.ps1
+./tools/prepare-for-workshop.ps1
 ```
 
-The script generates the current metadata and copies the mod to:
+The script generates the current metadata and copies the mod to _%USERPROFILE%/Zomboid/Workshop/[MyMod]_.
 
-```text
-%USERPROFILE%\Zomboid\Workshop\[MyMod]
-```
+The actual structure is a bit different from the  _Zomboid/mods/_ folder, so the actual mod
+data is in _%USERPROFILE%/Zomboid/Workshop/[MyMod]/Contents/mods/[MyMod]_
+
 
 ## 2. Upload from Project Zomboid
 
@@ -42,7 +42,7 @@ Run `prepare-for-workshop.ps1` again before later uploads so the generated `work
 For later releases:
 
 ```powershell
-.\tools\prepare-for-workshop.ps1
+./tools/prepare-for-workshop.ps1
 ```
 
 Then open **Workshop -> Create and update items** in Project Zomboid, select the existing item and upload the update.

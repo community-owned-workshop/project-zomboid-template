@@ -32,4 +32,4 @@ if ($LASTEXITCODE -ge 8) {
     throw "Could not copy mod. Robocopy exit code: $LASTEXITCODE"
 }
 
-Write-Host "Mod(s) installed at $env:USERPROFILE\Zomboid\mods\[MyMod]"
+Write-Host "Mod(s) installed at $Target"
