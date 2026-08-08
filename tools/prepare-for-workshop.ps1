@@ -1,5 +1,5 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# Runs tests, generates metadata and installs the mod locally.
+# Prepares the mod for the manual upload to Steam. See docs/workshop-upload.md for more info
 # ---------------------------------------------------------------------------------------------------------------------
 
 $ErrorActionPreference = "Stop"
@@ -11,7 +11,6 @@ if ($LASTEXITCODE -gt 0) {
     exit $LASTEXITCODE
 }
 
-
 & "$PSScriptRoot\generate-metadata.ps1"
 
 if ($LASTEXITCODE -gt 0) {
@@ -21,15 +20,26 @@ if ($LASTEXITCODE -gt 0) {
 
 $Root = Split-Path $PSScriptRoot -Parent
 $Source = Join-Path $Root "source\[MyMod]"
-$Target = Join-Path $env:USERPROFILE "Zomboid\mods\[MyMod]"
+$Target = Join-Path $env:USERPROFILE "Zomboid\Workshop\[MyMod]"
+$TargetContents = "$Target\Contents\mods\[MyMod]"
 
+New-Item -ItemType Directory -Force -Path "$TargetContents" | Out-Null
+
+Copy-Item `
+    "$Root\workshop\workshop.txt" `
+    "$Target\workshop.txt"
+Copy-Item `
+    "$Root\workshop\preview.png" `
+    "$Target\preview.png"
+    
 robocopy `
     $Source `
-    $Target `
+    $TargetContents `
     /MIR /NFL /NDL /NJH /NJS
 
 if ($LASTEXITCODE -ge 8) {
-    throw "Could not copy mod. Robocopy exit code: $LASTEXITCODE"
+    throw "Could not stage Workshop content. Robocopy exit code: $LASTEXITCODE"
 }
 
-Write-Host "Mod(s) installed at $Target"
+Write-Host "Mod(s) prepared for upload at $Target"
+Write-Host "Open Project Zomboid -> Workshop -> Create and update items to upload it."
