@@ -5,7 +5,7 @@
 Run:
 
 ```powershell
-.\tools\stage-workshop.ps1
+.\tools\prepare-for-workshop.ps1
 ```
 
 The script generates the current metadata and copies the mod to:
@@ -35,14 +35,14 @@ After the first upload, copy the new Steam Workshop ID into `metadata.json`:
 }
 ```
 
-Run `stage-workshop.ps1` again before later uploads so the generated `workshop.txt` contains the correct ID.
+Run `prepare-for-workshop.ps1` again before later uploads so the generated `workshop.txt` contains the correct ID.
 
 ## Updating an existing Workshop item
 
 For later releases:
 
 ```powershell
-.\tools\stage-workshop.ps1
+.\tools\prepare-for-workshop.ps1
 ```
 
 Then open **Workshop -> Create and update items** in Project Zomboid, select the existing item and upload the update.

@@ -14,3 +14,9 @@ Runs tests, generates metadata and installs the mod locally.
 
 ## `generate-metadata.ps1`
 Generates _mod.info_, _README.md_ and _workshop.txt_.
+
+## `build.ps1`
+Runs tests, generates metadata and installs the mod locally.
+
+## `prepare-for-workshop.ps1`
+Prepares the mod for the manual upload to Steam. See [Upload to the Steam Workshop](./workshop-upload.md) for more info
